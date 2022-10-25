@@ -7,9 +7,15 @@ public class TriggerWallMid : MonoBehaviour
     public AudioSource Scream;
     public GameObject ThePlayer;
     public bool triggered;
+    public AudioSource backgroundSound;
 
-    void OnTriggerEnter () {
-        Scream.Play();
-        triggered = true;
+    void OnTriggerEnter()
+    {
+        if (!triggered)
+        {
+            backgroundSound.Stop();
+            // Scream.Play();
+            triggered = true;
+        }
     }
 }

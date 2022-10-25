@@ -16,7 +16,7 @@ public class Flashlight : MonoBehaviour
 
     private Color standartColor;
     private Light lightComp;
-    
+
     [SerializeField] public Material[] MatList = new Material[4];
     [SerializeField] Light SpotLight;
 
@@ -31,24 +31,29 @@ public class Flashlight : MonoBehaviour
     void Update()
     {
         // Mat && SpotLight &&
-        if (UV) {
-            foreach(Material mat in MatList) {
+        if (UV)
+        {
+            foreach (Material mat in MatList)
+            {
                 mat.SetVector("_LightPosition", SpotLight.transform.position);
                 mat.SetVector("_LightDirection", -SpotLight.transform.forward);
                 mat.SetFloat("_LightAngle", SpotLight.spotAngle);
             }
         }
-        else {
-            foreach(Material mat in MatList) {
-                mat.SetFloat ("_LightAngle", 0f);
+        else
+        {
+            foreach (Material mat in MatList)
+            {
+                mat.SetFloat("_LightAngle", 0f);
             }
-            }
+        }
 
-        if(off && Input.GetButtonDown("F"))
+        if (off && Input.GetButtonDown("F"))
         {
             UV = false;
             lightComp.color = standartColor;
-            lightComp.intensity = 1.5F;
+            lightComp.intensity = 1f;
+            lightComp.spotAngle = 55f;
             flashlight.SetActive(true);
             turnOn.Play();
             off = false;
@@ -62,11 +67,12 @@ public class Flashlight : MonoBehaviour
             off = true;
             on = false;
         }
-        else if(off && Input.GetButtonDown("R"))
+        else if (off && Input.GetButtonDown("R"))
         {
             UV = true;
             lightComp.color = Color.magenta;
-            lightComp.intensity = 3;
+            lightComp.intensity = 1f;
+            lightComp.spotAngle = 35f;
             flashlight.SetActive(true);
             turnOn.Play();
             off = false;

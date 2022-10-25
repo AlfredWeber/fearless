@@ -7,7 +7,6 @@ public class OpenKeyPad : MonoBehaviour
     public GameObject keypadOB;
     public GameObject keypadText;
     public GameObject playerOB;
-
     public bool inReach;
 
 
@@ -22,7 +21,6 @@ public class OpenKeyPad : MonoBehaviour
         {
             inReach = true;
             keypadText.SetActive(true);
-
         }
     }
 
@@ -32,20 +30,18 @@ public class OpenKeyPad : MonoBehaviour
         {
             inReach = false;
             keypadText.SetActive(false);
-
         }
     }
 
     void Update()
     {
-        if(Input.GetButtonDown("Interact") && inReach)
+        if (Input.GetButtonDown("Interact") && inReach)
         {
             Rigidbody playerRigid = playerOB.GetComponent<Rigidbody>();
             playerRigid.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
-            // playerRigid.freezeRotation = true;
             keypadOB.SetActive(true);
         }
-        
+
 
     }
 }
