@@ -20,13 +20,8 @@ public class ButtonDontTouch : MonoBehaviour
 
     private AudioSource source;
     public AudioClip Clip;
- 
-    public double stopwatchDifference;
- 
-    private bool measuring = false;
- 
-    private Stopwatch _stopWatch;
-     
+    public AudioSource backgroundSound;
+
     void Start()
     {
         inReach = false;
@@ -56,12 +51,6 @@ public class ButtonDontTouch : MonoBehaviour
 
     void Update()
     {
-        if (measuring == true && (source.timeSamples != 0))
-        {
-            measuring = false;
-            _stopWatch.Stop();
-            stopwatchDifference = _stopWatch.Elapsed.TotalSeconds;
-        }
         if (inReach && Input.GetButtonDown("Interact"))
         {
             ButtonPressed();
@@ -73,23 +62,23 @@ public class ButtonDontTouch : MonoBehaviour
         }
     }
 
-    void ButtonPressed ()
+    void ButtonPressed()
     {
         if (!source.isPlaying && !seen)
         {
+            backgroundSound.Stop();
             seen = true;
             button.SetBool("ButtonPressed", true);
-            _stopWatch = Stopwatch.StartNew();
             source.Play();
-            measuring = true;
             customImage.enabled = true;
-            StartCoroutine(StartCountdown()); 
+            StartCoroutine(StartCountdown());
         }
     }
 
     public IEnumerator StartCountdown()
     {
         yield return new WaitForSeconds(0.6f);
-        customImage.enabled = false;         
+        customImage.enabled = false;
+        backgroundSound.Play();
     }
 }

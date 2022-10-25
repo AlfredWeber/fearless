@@ -10,16 +10,10 @@ public class Keypad : MonoBehaviour
     public GameObject player;
     public GameObject keypadOB;
     public GameObject hud;
-    // public GameObject inv;
-
-
     public GameObject animateOB;
     public Animator ANI;
-
-
     public Text textOB;
     public string answer = "12345";
-
     public AudioSource button;
     public AudioSource correct;
     public AudioSource wrong;
@@ -49,8 +43,6 @@ public class Keypad : MonoBehaviour
             wrong.Play();
             textOB.text = "Wrong";
         }
-
-
     }
 
     public void Clear()
@@ -64,7 +56,6 @@ public class Keypad : MonoBehaviour
     public void Exit()
     {
         keypadOB.SetActive(false);
-        // inv.SetActive(true);
         hud.SetActive(true);
         player.GetComponent<FirstPersonController>().enabled = true;
         Rigidbody playerRigid = player.GetComponent<Rigidbody>();
@@ -76,13 +67,13 @@ public class Keypad : MonoBehaviour
         if (textOB.text == "Right")
         {
             ANI.SetBool("Open", true);
+            ANI.SetBool("Close", false);
             Exit();
         }
 
-        if(keypadOB.activeInHierarchy)
+        if (keypadOB.activeInHierarchy)
         {
             hud.SetActive(false);
-            // inv.SetActive(false);
             player.GetComponent<FirstPersonController>().enabled = false;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;

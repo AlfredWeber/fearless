@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Doors : MonoBehaviour
 {
-    public Animator door;
+    private Animator animator;
     public GameObject openText;
-
     public AudioSource doorSound;
-
     public bool inReach;
+    private bool isOpen;
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         inReach = false;
     }
 
@@ -36,30 +36,32 @@ public class Doors : MonoBehaviour
 
     void Update()
     {
-
-        if (inReach && Input.GetButtonDown("Interact"))
+        if (inReach && Input.GetButtonDown("Interact") && !isOpen)
         {
+            isOpen = true;
             DoorOpens();
         }
 
-        else
+        else if (inReach && Input.GetButtonDown("Interact") && isOpen)
         {
+            isOpen = false;
             DoorCloses();
         }
 
     }
-    void DoorOpens ()
+    void DoorOpens()
     {
-        door.SetBool("Open", true);
-        door.SetBool("Closed", false);
+        animator.SetBool("Open", true);
+        animator.SetBool("Close", false);
         doorSound.Play();
 
     }
 
     void DoorCloses()
     {
-        door.SetBool("Open", false);
-        door.SetBool("Closed", true);
+        animator.SetBool("Open", false);
+        animator.SetBool("Close", true);
+        doorSound.Play();
     }
 
 
