@@ -9,9 +9,9 @@ public class TriggerWallMid : MonoBehaviour
     public bool triggered;
     public AudioSource backgroundSound;
 
-    void OnTriggerEnter()
+    void OnTriggerEnter(Collider other)
     {
-        if (!triggered)
+        if (!triggered && other.tag == "Player")
         {
             backgroundSound.Stop();
             // Scream.Play();
