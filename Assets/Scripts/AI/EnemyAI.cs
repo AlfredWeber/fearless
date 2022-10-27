@@ -1,9 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
+    // test commit
     [SerializeField] float moveSpeed;
     private GameObject triggerAI;
     private int[] coordsTriggers = { -33, -21, -11, -2 };
