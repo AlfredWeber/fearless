@@ -10,7 +10,7 @@ public class ToggleHallwaylight : MonoBehaviour
     private Color defaultEmissionColor = new Color(0.251f, 0.251f, 0.251f, 1.000f);
     private Light lightChild;
 
-    void Start()
+    private void Start()
     {
         materials = GetComponent<MeshRenderer>().materials;
         lightChild = this.GetComponentInChildren<Light>();
