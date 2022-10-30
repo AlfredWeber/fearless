@@ -39,7 +39,7 @@ public class EnemyController : MonoBehaviour
     private void MoveTowardsPlayer(bool kill = false)
     {
         this.kill = kill;
-        if (this.transform.position.z >= (UnityStandardAssets.Characters.FirstPerson.FirstPersonController.Instance.transform.position.z))
+        if (this.transform.position.z >= PlayerController.Instance.UnityFPSController.transform.position.z)
         {
             this.transform.position += new Vector3(0, 0, -1 * Time.deltaTime * crawlKillSpeed);
         }

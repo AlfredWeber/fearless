@@ -19,7 +19,7 @@ public class TriggerEnemy : MonoBehaviour
     private void Start()
     {
         enemy = EnemyController.Instance.gameObject;
-        player = UnityStandardAssets.Characters.FirstPerson.FirstPersonController.Instance.gameObject;
+        player = PlayerController.Instance.UnityFPSController.gameObject;
         InitializeOrigin();
         enemy.SetActive(false);
     }
