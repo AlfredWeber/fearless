@@ -9,6 +9,8 @@ TagManager:
   - TriggerAI
   - AI
   - TriggerAILight
+  - Light
+  - LightParent
   layers:
   - Default
   - TransparentFX
