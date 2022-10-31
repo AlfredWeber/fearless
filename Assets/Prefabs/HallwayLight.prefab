@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3160221689538751549}
   - component: {fileID: 8813377773716432092}
   - component: {fileID: 5214387525568082836}
-  - component: {fileID: 4064536941942103404}
   m_Layer: 0
   m_Name: LedLight
   m_TagString: Untagged
@@ -88,19 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4064536941942103404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 148457933611092137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5713a6212ccca24082f9f421da6842c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isEmmitting: 0
 --- !u!1 &8557543066499239315
 GameObject:
   m_ObjectHideFlags: 0
