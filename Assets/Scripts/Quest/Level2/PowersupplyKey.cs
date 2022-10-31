@@ -13,6 +13,7 @@ public class PowersupplyKey : MonoBehaviour, ICollectable
         new Vector3(9, 0, 25)
     };
     private bool isInReach;
+    [SerializeField] private AudioClip pickUpClip;
 
     void Start()
     {
@@ -26,12 +27,20 @@ public class PowersupplyKey : MonoBehaviour, ICollectable
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.tag == "Reach") isInReach = true;
+        if (collider.gameObject.tag == "Reach")
+        {
+            isInReach = true;
+            HUDManager.Instance.ShowText(HUDManager.TextDictionary[TextOptions.PICK_UP]);
+        }
     }
 
     private void OnTriggerExit(Collider collider)
     {
-        if (collider.gameObject.tag == "Reach") isInReach = false;
+        if (collider.gameObject.tag == "Reach")
+        {
+            isInReach = false;
+            HUDManager.Instance.HideText();
+        }
     }
 
     #region Interface
@@ -48,6 +57,8 @@ public class PowersupplyKey : MonoBehaviour, ICollectable
         if (isInReach && Input.GetKeyDown(KeyCode.E))
         {
             PlayerController.Instance.AddQuestItem(this);
+            HUDManager.Instance.HideText();
+            AudioManager.Instance.PlaySound(pickUpClip);
             Destroy(this.gameObject);
         }
     }

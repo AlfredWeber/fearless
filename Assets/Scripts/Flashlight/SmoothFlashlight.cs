@@ -28,6 +28,7 @@ public class SmoothFlashlight : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F) && !isActive)
         {
+            HUDManager.Instance.ToggleFlashlight();
             isActive = true;
             flashlight.enabled = isActive;
             flashlightSound.Play();
@@ -39,6 +40,7 @@ public class SmoothFlashlight : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.F) && isActive)
         {
+            HUDManager.Instance.ToggleFlashlight();
             isActive = false;
             flashlight.enabled = isActive;
             flashlightSound.Play();
