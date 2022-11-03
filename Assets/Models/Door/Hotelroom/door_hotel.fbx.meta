@@ -7,13 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Test
-    second: {fileID: 2100000, guid: 71a4807cc01fdf442a7b45a212fa4c08, type: 2}
+      name: Metal
+    second: {fileID: 2100000, guid: c44ca36303a962849b24896d7c3775ae, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: UV
-    second: {fileID: 2100000, guid: f2dadcdae0a7bbd44aee12ba2e83d8fc, type: 2}
+      name: Wooden like matter
+    second: {fileID: 2100000, guid: b82a0ea51a0e0584bb783d96024844a4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
