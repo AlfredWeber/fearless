@@ -4,23 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public enum TextOptions
+public class TextOptions
 {
-    PICK_UP,
-    OPEN_DOOR,
-    CCTV
+    public static string PICK_UP = "Pick up [E]";
+    public static string OPEN_DOOR = "Open/Close [E]";
+    public static string CCTV = "Interact [E]";
 }
 
 public class HUDManager : MonoBehaviour
 {
     public static HUDManager Instance { get; private set; }
-    public static Dictionary<TextOptions, string> TextDictionary = new Dictionary<TextOptions, string>()
-    {
-        {TextOptions.PICK_UP, "Pick up [E]"},
-        {TextOptions.OPEN_DOOR, "Open/Close [E]"},
-        {TextOptions.CCTV, "Interact [E]"},
-    };
-
     private RawImage powerSupplyKey;
     private TextMeshProUGUI text;
 

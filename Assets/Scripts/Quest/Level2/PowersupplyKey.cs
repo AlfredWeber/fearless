@@ -30,7 +30,7 @@ public class PowersupplyKey : MonoBehaviour, ICollectable
         if (collider.gameObject.tag == "Reach")
         {
             isInReach = true;
-            HUDManager.Instance.ShowText(HUDManager.TextDictionary[TextOptions.PICK_UP]);
+            HUDManager.Instance.ShowText(TextOptions.PICK_UP);
         }
     }
 
@@ -58,7 +58,7 @@ public class PowersupplyKey : MonoBehaviour, ICollectable
         {
             PlayerController.Instance.AddQuestItem(this);
             HUDManager.Instance.HideText();
-            AudioManager.Instance.PlaySound(pickUpClip);
+            AudioManager.Instance.PlaySoundOneShot(pickUpClip);
             Destroy(this.gameObject);
         }
     }
