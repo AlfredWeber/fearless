@@ -34,7 +34,7 @@ public class AudioManager : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(this.gameObject);
+        // DontDestroyOnLoad(this.gameObject);
 
         musicGameObjects = new List<GameObject>();
         soundEffectGameObjects = new List<GameObject>();
