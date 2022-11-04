@@ -5,12 +5,12 @@ using UnityEngine;
 public class PowersupplyKey : MonoBehaviour, ICollectable
 {
     private Vector3[] possibleSpawnPositions = {
-        new Vector3(17, 0, 114),
-        new Vector3(4, 0, 94),
-        new Vector3(-3, 0, 62),
+        // new Vector3(17, 0, 114),
+        // new Vector3(4, 0, 94),
+        // new Vector3(-3, 0, 62),
         new Vector3(-8.085f, 1.313f, 4.214f),
-        new Vector3(10.687f, 0.69f, 4.886f),
-        new Vector3(9, 0, 25)
+        // new Vector3(10.687f, 0.69f, 4.886f),
+        // new Vector3(9, 0, 25)
     };
     private bool isInReach;
     [SerializeField] private AudioClip pickUpClip;
@@ -58,7 +58,7 @@ public class PowersupplyKey : MonoBehaviour, ICollectable
         {
             PlayerController.Instance.AddQuestItem(this);
             HUDManager.Instance.HideText();
-            AudioManager.Instance.PlaySoundOneShot(pickUpClip);
+            AudioManager.Instance.PlaySoundOneShot(Sound.KEY_PICKED_UP);
             Destroy(this.gameObject);
         }
     }
