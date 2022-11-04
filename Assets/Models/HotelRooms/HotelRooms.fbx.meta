@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 75873bdb29d5bfb429880cf314a592b5
+guid: 5f285226434fed14eb33cc7c0c9abe7c
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Base
-    second: {fileID: 2100000, guid: 96677a1bf1a35284d887d7ffa6dce76d, type: 2}
+    second: {fileID: 2100000, guid: 9b989c041d1bec54cb6cc3346550f360, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
