@@ -9,10 +9,12 @@ public class Phone : MonoBehaviour
     private bool isRinging;
     private bool inReach;
     private Coroutine hash;
+    private SoundOptions soundOptions;
 
     private void Start()
     {
         hash = StartCoroutine("Ring");
+        soundOptions = new SoundOptions(this.transform.position, loop: true);
     }
 
     private void Update()
@@ -21,7 +23,7 @@ public class Phone : MonoBehaviour
         {
             isRinging = false;
             StopCoroutine(hash);
-            AudioManager.Instance.StopSound();
+            AudioManager.Instance.StopSound(Sound.TELEPHONE_RING);
             HUDManager.Instance.HideText();
             hash = StartCoroutine("Ring");
         }
@@ -32,7 +34,7 @@ public class Phone : MonoBehaviour
     {
         yield return new WaitForSeconds(delayInSeconds);
         isRinging = true;
-        AudioManager.Instance.PlaySoundLoop(ring);
+        AudioManager.Instance.PlaySound(Sound.TELEPHONE_RING, soundOptions);
     }
 
     private void OnTriggerEnter(Collider collider)

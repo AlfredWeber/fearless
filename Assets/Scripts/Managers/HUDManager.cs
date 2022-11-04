@@ -22,11 +22,11 @@ public class HUDManager : MonoBehaviour
         if (Instance != null && Instance != this)
         {
             Destroy(this);
+            return;
         }
-        else
-        {
-            Instance = this;
-        }
+
+        Instance = this;
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Start()

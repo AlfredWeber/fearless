@@ -5,6 +5,6 @@ public enum CollectableItems
 
 public interface ICollectable
 {
-    CollectableItems Name { get; }
-    void Collect();
+    public CollectableItems Name { get; }
+    public void Collect();
 }
