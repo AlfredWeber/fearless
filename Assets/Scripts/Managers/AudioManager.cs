@@ -5,7 +5,8 @@ using UnityEngine;
 public enum Sound
 {
     TELEPHONE_RING,
-    KEY_PICKED_UP
+    KEY_PICKED_UP,
+    CLOCK_TICKING,
 }
 
 [System.Serializable]
@@ -34,10 +35,7 @@ public class AudioManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(this.gameObject);
-    }
 
-    private void Start()
-    {
         musicGameObjects = new List<GameObject>();
         soundEffectGameObjects = new List<GameObject>();
     }
@@ -91,7 +89,11 @@ public class AudioManager : MonoBehaviour
     {
         // Look up audioclip and return if not found
         AudioClip clip = FindAudioClip(sound);
-        if (clip == null) return null;
+        if (clip == null)
+        {
+            Debug.LogError("Sound-Clip not found!");
+            return null;
+        }
 
         // Create new Gameobject with Audiosource attached
         GameObject go;
@@ -105,6 +107,12 @@ public class AudioManager : MonoBehaviour
         // Apply position & other options for Audiosource
         SetSoundOptions(ref audioSource, opts);
 
+        if (soundEffectGameObjects == null && !isPlay)
+        {
+            Debug.LogError("FX-List not initialized yet!");
+            return null;
+        }
+
         // Insert Gameobject into list
         if (isPlay) musicGameObjects.Add(go);
         else soundEffectGameObjects.Add(go);
@@ -115,6 +123,12 @@ public class AudioManager : MonoBehaviour
 
     private GameObject Exists(Sound sound)
     {
+        if (musicGameObjects == null)
+        {
+            Debug.LogError("Music-List not initialized yet!");
+            return null;
+        }
+
         for (int i = 0; i < musicGameObjects.Count; i++)
         {
             AudioSource audioSource = musicGameObjects[i].GetComponent<AudioSource>();
@@ -130,7 +144,6 @@ public class AudioManager : MonoBehaviour
     private IEnumerator DeleteOneShotGameObjects()
     {
         yield return new WaitForSeconds(1f);
-        Debug.Log(soundEffectGameObjects.Count);
         for (int i = 0; i < soundEffectGameObjects.Count; i++)
         {
             GameObject go = soundEffectGameObjects[i];
@@ -169,6 +182,7 @@ public class AudioManager : MonoBehaviour
         // If Gameobject already exists, use it. Else set up everything
         GameObject go = Exists(sound);
         if (go == null) go = CreateGameobjectWithAudiosource(sound, true, opts);
+
         AudioSource audioSource = go.GetComponent<AudioSource>();
 
         // Finally play clip one shot 
