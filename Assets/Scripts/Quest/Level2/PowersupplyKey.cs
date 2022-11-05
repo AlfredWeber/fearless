@@ -4,20 +4,24 @@ using UnityEngine;
 
 public class PowersupplyKey : MonoBehaviour, ICollectable
 {
-    private Vector3[] possibleSpawnPositions = {
-        // new Vector3(17, 0, 114),
-        // new Vector3(4, 0, 94),
-        // new Vector3(-3, 0, 62),
-        new Vector3(-8.085f, 1.313f, 4.214f),
-        // new Vector3(10.687f, 0.69f, 4.886f),
-        // new Vector3(9, 0, 25)
-    };
+
     private bool isInReach;
     [SerializeField] private AudioClip pickUpClip;
+    [SerializeField] private bool isRandomSpawn = true;
+    private static Vector3 defaultSpawn = new Vector3(-8.085f, 1.313f, 4.214f);
+    private Vector3[] possibleSpawnPositions = {
+        PowersupplyKey.defaultSpawn,
+        new Vector3(17, 0, 114),
+        new Vector3(4, 0, 94),
+        new Vector3(-3, 0, 62),
+        new Vector3(10.687f, 0.69f, 4.886f),
+        new Vector3(9, 0, 25)
+    };
 
     void Start()
     {
         this.transform.position = GetRandomSpawnPosition();
+        this.gameObject.SetActive(false);
     }
 
     void Update()
@@ -66,6 +70,7 @@ public class PowersupplyKey : MonoBehaviour, ICollectable
 
     private Vector3 GetRandomSpawnPosition()
     {
+        if (!this.isRandomSpawn) return PowersupplyKey.defaultSpawn;
         return possibleSpawnPositions[Random.Range(0, possibleSpawnPositions.Length)];
     }
 }
