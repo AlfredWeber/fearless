@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.1
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
+  m_AmbientSkyColor: {r: 1, g: 1, b: 1, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -4530,6 +4530,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 134881077}
     m_Modifications:
     - target: {fileID: 4912353173110219699, guid: 7ed44b4eee0225b41ba04c645c6837b5, type: 3}
+      propertyPath: isLocked
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4912353173110219699, guid: 7ed44b4eee0225b41ba04c645c6837b5, type: 3}
       propertyPath: unLocked
       value: 1
       objectReference: {fileID: 0}
@@ -6324,12 +6328,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 134881077}
     m_Modifications:
     - target: {fileID: 4912353173110219699, guid: 7ed44b4eee0225b41ba04c645c6837b5, type: 3}
+      propertyPath: key
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4912353173110219699, guid: 7ed44b4eee0225b41ba04c645c6837b5, type: 3}
+      propertyPath: isLocked
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4912353173110219699, guid: 7ed44b4eee0225b41ba04c645c6837b5, type: 3}
       propertyPath: unLocked
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4912353173110219699, guid: 7ed44b4eee0225b41ba04c645c6837b5, type: 3}
       propertyPath: isOpenable
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4912353173669534724, guid: 7ed44b4eee0225b41ba04c645c6837b5, type: 3}
       propertyPath: m_RootOrder
@@ -6456,7 +6468,7 @@ GameObject:
   - component: {fileID: 1053126281}
   - component: {fileID: 1053126282}
   m_Layer: 5
-  m_Name: Note
+  m_Name: NoteLobby
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8021,6 +8033,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 134881077}
     m_Modifications:
+    - target: {fileID: 4912353173110219699, guid: 7ed44b4eee0225b41ba04c645c6837b5, type: 3}
+      propertyPath: key
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4912353173110219699, guid: 7ed44b4eee0225b41ba04c645c6837b5, type: 3}
       propertyPath: unLocked
       value: 1
@@ -12933,6 +12949,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 134881077}
     m_Modifications:
+    - target: {fileID: 4912353173110219699, guid: 7ed44b4eee0225b41ba04c645c6837b5, type: 3}
+      propertyPath: key
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4912353173110219699, guid: 7ed44b4eee0225b41ba04c645c6837b5, type: 3}
+      propertyPath: isLocked
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4912353173669534724, guid: 7ed44b4eee0225b41ba04c645c6837b5, type: 3}
       propertyPath: m_RootOrder
       value: 0
