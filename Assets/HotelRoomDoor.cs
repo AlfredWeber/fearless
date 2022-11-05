@@ -25,14 +25,14 @@ public class HotelRoomDoor : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (!CheckTrigger(collider.gameObject.tag)) return;
+        if (!CheckTrigger(collider.gameObject.tag) || !isOpenable) return;
         inReach = true;
         HUDManager.Instance.ShowText(TextOptions.OPEN_DOOR);
     }
 
     private void OnTriggerExit(Collider collider)
     {
-        if (!CheckTrigger(collider.gameObject.tag)) return;
+        if (!CheckTrigger(collider.gameObject.tag) || !isOpenable) return;
         inReach = false;
         HUDManager.Instance.HideText();
     }
