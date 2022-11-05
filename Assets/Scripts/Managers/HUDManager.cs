@@ -27,7 +27,7 @@ public class TextOptions
 }
 public class ImageOptions
 {
-    public static RawImage LOBBY_NOTE = Helper
+    public static RawImage NOTE_LOBBY = Helper
                                             .FindChildGameObjectByName(HUDManager.Instance.gameObject, "Note")
                                             .GetComponent<RawImage>();
 }

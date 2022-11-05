@@ -11,7 +11,7 @@ public class Note : MonoBehaviour
     {
         if (inReach && Input.GetKeyDown(KeyCode.E))
         {
-            HUDManager.Instance.ShowImage(ImageOptions.LOBBY_NOTE);
+            HUDManager.Instance.ShowImage(ImageOptions.NOTE_LOBBY);
         }
     }
     private void OnTriggerEnter(Collider collider)
@@ -29,7 +29,7 @@ public class Note : MonoBehaviour
         {
             inReach = false;
             HUDManager.Instance.HideText();
-            HUDManager.Instance.HideImage(ImageOptions.LOBBY_NOTE);
+            HUDManager.Instance.HideImage(ImageOptions.NOTE_LOBBY);
         }
     }
 }
