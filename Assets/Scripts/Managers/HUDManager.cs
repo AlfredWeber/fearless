@@ -9,6 +9,11 @@ public class TextOptions
     public static string PICK_UP = "Pick up [E]";
     public static string OPEN_DOOR = "Open/Close [E]";
     public static string CCTV = "Interact [E]";
+    public static string READ_NOTE = "Read Note [E]";
+}
+public class ImageOptions
+{
+    public static RawImage LOBBY_NOTE = Helper.FindChildGameObjectByName(HUDManager.Instance.gameObject, "Note").GetComponent<RawImage>();
 }
 
 public class HUDManager : MonoBehaviour
@@ -62,5 +67,15 @@ public class HUDManager : MonoBehaviour
     public void HideText()
     {
         this.text.enabled = false;
+    }
+
+    public void ShowImage(RawImage image)
+    {
+        image.enabled = true;
+    }
+
+    public void HideImage(RawImage image)
+    {
+        image.enabled = false;
     }
 }
