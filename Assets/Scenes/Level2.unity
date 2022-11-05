@@ -8433,6 +8433,12 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 5d724352de35a7f428698b85d511c589, type: 3}
   - sound: 2
     clip: {fileID: 8300000, guid: a009573945d64c847a7ec7be74a516cb, type: 3}
+  - sound: 3
+    clip: {fileID: 8300000, guid: 7c62e2f34f31e9f45a89b000d409616e, type: 3}
+  - sound: 4
+    clip: {fileID: 8300000, guid: fd759dd87f6b0ff41a0f98c5de522e1d, type: 3}
+  - sound: 5
+    clip: {fileID: 8300000, guid: d1e3f8dd27c3815438ed88e8b73f92c1, type: 3}
 --- !u!1 &1689657541
 GameObject:
   m_ObjectHideFlags: 0
@@ -9617,6 +9623,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1869694991}
   - component: {fileID: 1869694992}
+  - component: {fileID: 1869694993}
   m_Layer: 0
   m_Name: RoomDoorPivot
   m_TagString: Untagged
@@ -9660,6 +9667,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1869694993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869694990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36f0941bc04590846a783f51cc3a9903, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isOpenable: 1
+  unLocked: 0
 --- !u!4 &1895271085 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9000317532221353943, guid: ae01de2d0b63bbe408cc956ba85be9b6, type: 3}
