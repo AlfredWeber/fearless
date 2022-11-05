@@ -33,6 +33,9 @@ public class PlayerController : MonoBehaviour
 
     public bool HasQuestItem(CollectableItems item)
     {
+        // TODO: Soll der spieler NONE immer haben, oder nicht? was ist besser fuer die logik?
+        if (item == CollectableItems.NONE) return false;
+
         foreach (ICollectable qi in questItems)
         {
             if (qi.Name == item) return true;

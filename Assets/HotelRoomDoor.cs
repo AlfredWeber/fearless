@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class HotelRoomDoor : MonoBehaviour
 {
-    [SerializeField] private bool isOpenable;
-    [SerializeField] private bool unLocked;
+    [SerializeField] private bool isOpenable = true;
+    [SerializeField] private bool isLocked = false;
+    [SerializeField] private CollectableItems key = CollectableItems.NONE;
     private bool isOpen;
     private bool inReach;
     private Animator animator;
@@ -23,11 +24,32 @@ public class HotelRoomDoor : MonoBehaviour
     }
     #endregion Unity life-cycle
 
+    private bool hasItem()
+    {
+        return PlayerController.Instance.HasQuestItem(key);
+    }
+
     private void OnTriggerEnter(Collider collider)
     {
         if (!CheckTrigger(collider.gameObject.tag) || !isOpenable) return;
+
         inReach = true;
-        HUDManager.Instance.ShowText(TextOptions.OPEN_DOOR);
+        bool hasItem = this.hasItem();
+        TextOptions opts = TextOptions.Default;
+
+        if (hasItem && isLocked)
+        {
+            HUDManager.Instance.ShowText(TextOptions.DOOR_UNLOCK, opts);
+        }
+        else if (!hasItem && isLocked)
+        {
+            opts = new TextOptions(color: Color.gray);
+            HUDManager.Instance.ShowText(TextOptions.DOOR_LOCKED, opts);
+        }
+        else
+        {
+            HUDManager.Instance.ShowText(TextOptions.DOOR_INTERACT, opts);
+        }
     }
 
     private void OnTriggerExit(Collider collider)
@@ -51,22 +73,24 @@ public class HotelRoomDoor : MonoBehaviour
     public void HandleDoor()
     {
         if (!inReach || !Input.GetKeyDown(KeyCode.E)) return;
-        bool hasQuestItem = PlayerController.Instance.HasQuestItem(CollectableItems.PowersupplyKey);
 
-        if (hasQuestItem && !unLocked)
+        bool hasItem = this.hasItem();
+
+        if (hasItem && isLocked)
         {
-            unLocked = true;
+            HUDManager.Instance.ShowText(TextOptions.DOOR_INTERACT);
             AudioManager.Instance.PlaySoundOneShot(Sound.DOOR_UNLOCK);
+            isLocked = false;
             return;
         }
 
-        if (hasQuestItem || unLocked)
+        if (hasItem || !isLocked)
         {
             isOpen = !isOpen;
             HandleDoorAnimation(isOpen);
             AudioManager.Instance.PlaySoundOneShot(Sound.DOOR_CREAK);
         }
-        else if (!hasQuestItem)
+        else if (!hasItem)
         {
             animator.SetTrigger("Locked");
             AudioManager.Instance.PlaySoundOneShot(Sound.DOOR_LOCKED);
