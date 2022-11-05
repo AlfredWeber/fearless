@@ -1,6 +1,7 @@
 public enum CollectableItems
 {
-    PowersupplyKey = 0
+    PowersupplyKey,
+    NONE
 }
 
 public interface ICollectable

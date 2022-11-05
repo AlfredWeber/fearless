@@ -6,14 +6,30 @@ using TMPro;
 
 public class TextOptions
 {
-    public static string PICK_UP = "Pick up [E]";
-    public static string OPEN_DOOR = "Open/Close [E]";
-    public static string CCTV = "Interact [E]";
-    public static string READ_NOTE = "Read Note [E]";
+    private static string _interact = "[E]";
+    public static string PICK_UP = "Pick up " + _interact;
+    public static string DOOR_INTERACT = "Open/Close " + _interact;
+    public static string CCTV = "Interact " + _interact;
+    public static string READ_NOTE = "Read Note " + _interact;
+    public static string DOOR_LOCKED = "Locked " + _interact;
+    public static string DOOR_UNLOCK = "Unlock " + _interact;
+
+    public static TextOptions Default = new TextOptions(Color.white, 16);
+
+    public Color color;
+    public float fontSize;
+
+    public TextOptions(Color? color = null, float fontSize = 16f)
+    {
+        this.color = color == null ? Color.white : (Color)color;
+        this.fontSize = fontSize;
+    }
 }
 public class ImageOptions
 {
-    public static RawImage LOBBY_NOTE = Helper.FindChildGameObjectByName(HUDManager.Instance.gameObject, "Note").GetComponent<RawImage>();
+    public static RawImage LOBBY_NOTE = Helper
+                                            .FindChildGameObjectByName(HUDManager.Instance.gameObject, "Note")
+                                            .GetComponent<RawImage>();
 }
 
 public class HUDManager : MonoBehaviour
@@ -58,14 +74,23 @@ public class HUDManager : MonoBehaviour
         flashlightOff.enabled = !flashlightOff.enabled;
     }
 
-    public void ShowText(string text)
+    private void ApplyTextOptions(TextOptions opts = null)
     {
+        if (opts == null) opts = TextOptions.Default;
+        this.text.color = opts.color;
+        this.text.fontSize = opts.fontSize;
+    }
+
+    public void ShowText(string text, TextOptions opts = null)
+    {
+        if (opts != null) ApplyTextOptions(opts);
         this.text.text = text;
         this.text.enabled = true;
     }
 
     public void HideText()
     {
+        ApplyTextOptions(TextOptions.Default);
         this.text.enabled = false;
     }
 
