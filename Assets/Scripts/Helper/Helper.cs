@@ -5,6 +5,20 @@ using UnityEngine;
 
 public class Helper
 {
+    public static GameObject FindGameObjectByName(string name)
+    {
+        Transform[] objs = Resources.FindObjectsOfTypeAll<Transform>() as Transform[];
+        for (int i = 0; i < objs.Length; i++)
+        {
+            if (objs[i].hideFlags == HideFlags.None && objs[i].name == name)
+            {
+                return objs[i].gameObject;
+            }
+        }
+
+        return null;
+    }
+
     public static GameObject FindChildGameObjectByName(GameObject parent, string name)
     {
         for (int i = 0; i < parent.transform.childCount; i++)
