@@ -37,7 +37,7 @@ public class AudioManager : MonoBehaviour
         }
 
         Instance = this;
-        // DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(this.gameObject);
 
         musicGameObjects = new List<GameObject>();
         soundEffectGameObjects = new List<GameObject>();
@@ -124,7 +124,7 @@ public class AudioManager : MonoBehaviour
         return go;
     }
 
-    private GameObject Exists(Sound sound)
+    private GameObject ExistsMusic(Sound sound)
     {
         if (musicGameObjects == null)
         {
@@ -162,6 +162,12 @@ public class AudioManager : MonoBehaviour
     }
 
 
+    public void Restart()
+    {
+        musicGameObjects = new List<GameObject>();
+        soundEffectGameObjects = new List<GameObject>();
+    }
+
     public AudioClip FindAudioClip(Sound sound)
     {
         SoundAudioClip a = mappedAudioClips.Find((sac) => sac.sound == sound);
@@ -183,7 +189,7 @@ public class AudioManager : MonoBehaviour
     public GameObject PlaySound(Sound sound, SoundOptions opts = null)
     {
         // If Gameobject already exists, use it. Else set up everything
-        GameObject go = Exists(sound);
+        GameObject go = ExistsMusic(sound);
         if (go == null) go = CreateGameobjectWithAudiosource(sound, true, opts);
 
         AudioSource audioSource = go.GetComponent<AudioSource>();

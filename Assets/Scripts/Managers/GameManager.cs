@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     {
         // yield return new WaitForSeconds(2);
         yield return null;
+        AudioManager.Instance.Restart();
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
     }
