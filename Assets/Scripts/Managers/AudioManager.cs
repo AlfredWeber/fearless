@@ -7,6 +7,9 @@ public enum Sound
     TELEPHONE_RING,
     KEY_PICKED_UP,
     CLOCK_TICKING,
+    DOOR_CREAK,
+    DOOR_LOCKED,
+    DOOR_UNLOCK
 }
 
 [System.Serializable]
