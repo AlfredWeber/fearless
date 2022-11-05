@@ -161,6 +161,35 @@ public class AudioManager : MonoBehaviour
         isCoroutineRunning = false;
     }
 
+    private GameObject FindBySound(Sound sound)
+    {
+        for (int i = 0; i < musicGameObjects.Count; i++)
+        {
+            AudioSource audioSource = musicGameObjects[i].GetComponent<AudioSource>();
+            foreach (SoundAudioClip sac in mappedAudioClips)
+            {
+                if (sound == sac.sound && sac.clip == audioSource.clip)
+                {
+                    return musicGameObjects[i];
+                }
+            }
+        }
+
+        for (int i = 0; i < soundEffectGameObjects.Count; i++)
+        {
+            AudioSource audioSource = soundEffectGameObjects[i].GetComponent<AudioSource>();
+            foreach (SoundAudioClip sac in mappedAudioClips)
+            {
+                if (sound == sac.sound && sac.clip == audioSource.clip)
+                {
+                    return soundEffectGameObjects[i];
+                }
+            }
+        }
+
+        return null;
+    }
+
 
     public void Restart()
     {
@@ -201,17 +230,49 @@ public class AudioManager : MonoBehaviour
 
     public void StopSound(Sound sound)
     {
-        for (int i = 0; i < musicGameObjects.Count; i++)
+        GameObject go = FindBySound(sound);
+        AudioSource src = go.GetComponent<AudioSource>();
+        src.Stop();
+    }
+
+    public bool HasFinished(GameObject go)
+    {
+        if (go == null) return false;
+        AudioSource src = go.GetComponent<AudioSource>();
+        if (src == null) return false;
+        return !src.isPlaying;
+    }
+
+    public bool HasFinished(string name)
+    {
+        GameObject go = null;
+        bool found = false;
+
+        for (int i = 0; i < soundEffectGameObjects.Count && !found; i++)
         {
-            AudioSource audioSource = musicGameObjects[i].GetComponent<AudioSource>();
-            foreach (SoundAudioClip sac in mappedAudioClips)
+            GameObject tmp = soundEffectGameObjects[i];
+            if (tmp.name == name)
             {
-                if (sound == sac.sound && sac.clip == audioSource.clip)
-                {
-                    audioSource.Stop();
-                    return;
-                }
+                found = true;
+                go = tmp;
             }
         }
+
+        for (int i = 0; i < musicGameObjects.Count && !found; i++)
+        {
+            GameObject tmp = musicGameObjects[i];
+            if (tmp.name == name)
+            {
+                found = true;
+                go = tmp;
+            }
+        }
+
+        return HasFinished(go);
+    }
+
+    public bool HasFinished(Sound sound)
+    {
+        return HasFinished(FindBySound(sound));
     }
 }

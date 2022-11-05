@@ -52,7 +52,7 @@ public class HUDManager : MonoBehaviour
 
     private void Start()
     {
-        powerSupplyKey = Helper.FindChildGameObjectByName(this.gameObject, "Key").GetComponent<RawImage>();
+        // powerSupplyKey = Helper.FindChildGameObjectByName(this.gameObject, "PowersupplyKey").GetComponent<RawImage>();
         text = Helper.FindChildGameObjectByName(this.gameObject, "InteractionText").GetComponent<TextMeshProUGUI>();
         HideText();
     }

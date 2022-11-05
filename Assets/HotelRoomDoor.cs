@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class HotelRoomDoor : MonoBehaviour
@@ -10,6 +11,7 @@ public class HotelRoomDoor : MonoBehaviour
     private bool isOpen;
     private bool inReach;
     private Animator animator;
+    private GameObject doorCreak;
 
     #region Unity life-cycle
     void Start()
@@ -86,9 +88,12 @@ public class HotelRoomDoor : MonoBehaviour
 
         if (hasItem || !isLocked)
         {
-            isOpen = !isOpen;
-            HandleDoorAnimation(isOpen);
-            AudioManager.Instance.PlaySoundOneShot(Sound.DOOR_CREAK);
+            if (doorCreak == null)
+            {
+                isOpen = !isOpen;
+                HandleDoorAnimation(isOpen);
+                doorCreak = AudioManager.Instance.PlaySoundOneShot(Sound.DOOR_CREAK);
+            }
         }
         else if (!hasItem)
         {
