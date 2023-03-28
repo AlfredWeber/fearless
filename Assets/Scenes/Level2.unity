@@ -3288,7 +3288,7 @@ GameObject:
   - component: {fileID: 496555593}
   - component: {fileID: 496555592}
   m_Layer: 5
-  m_Name: PowersupplyKey
+  m_Name: HudPowersupplyKey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
