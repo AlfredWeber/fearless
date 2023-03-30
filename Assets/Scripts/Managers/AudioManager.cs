@@ -9,7 +9,8 @@ public enum Sound
     CLOCK_TICKING,
     DOOR_CREAK,
     DOOR_LOCKED,
-    DOOR_UNLOCK
+    DOOR_UNLOCK,
+    HORROR_RUN
 }
 
 [System.Serializable]
