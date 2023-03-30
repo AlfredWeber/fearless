@@ -101,4 +101,9 @@ public class HotelRoomDoor : MonoBehaviour
             AudioManager.Instance.PlaySoundOneShot(Sound.DOOR_LOCKED);
         }
     }
+
+    public void SetLock(bool status)
+    {
+        this.isLocked = status;
+    }
 }
