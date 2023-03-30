@@ -21,5 +21,6 @@ public class TriggerDoors : MonoBehaviour
         if (collider.gameObject.tag != "Player") return;
 
         GameManager.Instance.LockDoors();
+        AudioManager.Instance.PlaySoundOneShot(Sound.HORROR_RUN);
     }
 }
