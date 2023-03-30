@@ -14,11 +14,14 @@ public class Generator : MonoBehaviour
         if (!inReach || !Input.GetKeyDown(KeyCode.E)) return;
 
         LightsController.Instance.ToggleAllLights();
+
         EnemyController.Instance.gameObject.transform.position = targetPosition;
+        Helper.FindGameObjectByName("TriggerLights2").gameObject.SetActive(true);
         EnemyController.Instance.gameObject.transform.rotation *= Quaternion.Euler(targetRotation.x, targetRotation.y, targetRotation.z);
         EnemyController.Instance.gameObject.transform.localScale = targetScale;
         EnemyController.Instance.gameObject.SetActive(true);
         EnemyController.Instance.SetCurrentStatus(EnemyController.EnemyStatus.CRAWL);
+        Helper.FindGameObjectByName("SpotLightRed").gameObject.SetActive(true);
     }
 
     private void OnTriggerEnter(Collider collider)
