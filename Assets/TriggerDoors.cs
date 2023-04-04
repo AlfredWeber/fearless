@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class TriggerDoors : MonoBehaviour
 {
+    private Vector3 targetPosition = new Vector3(0, 0.1f, 20f);
+    private Vector3 targetRotation = new Vector3(0, 180f, 0);
+    private Vector3 targetScale = new Vector3(0.025f, 0.025f, 0.025f);
     // Start is called before the first frame update
     void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
     {
 
     }
@@ -21,6 +18,14 @@ public class TriggerDoors : MonoBehaviour
         if (collider.gameObject.tag != "Player") return;
 
         GameManager.Instance.LockDoors();
-        AudioManager.Instance.PlaySoundOneShot(Sound.HORROR_RUN);
+        AudioManager.Instance.PlaySound(Sound.HORROR_RUN, new SoundOptions(this.transform.position, loop: true));
+        AudioManager.Instance.PlaySoundOneShot(Sound.POWER_DOWN);
+        EnemyController.Instance.gameObject.transform.position = targetPosition;
+        EnemyController.Instance.gameObject.transform.rotation *= Quaternion.Euler(targetRotation.x, targetRotation.y, targetRotation.z);
+        EnemyController.Instance.gameObject.transform.localScale = targetScale;
+        EnemyController.Instance.gameObject.SetActive(true);
+        EnemyController.Instance.SetCurrentStatus(EnemyController.EnemyStatus.CRAWL);
+        GameObject obj = Helper.FindGameObjectByName("TriggerGenerator");
+        obj.SetActive(true);
     }
 }

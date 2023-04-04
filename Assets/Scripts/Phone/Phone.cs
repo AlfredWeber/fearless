@@ -14,7 +14,15 @@ public class Phone : MonoBehaviour
     private void Start()
     {
         hash = StartCoroutine("Ring");
-        soundOptions = new SoundOptions(this.transform.position, loop: true);
+        soundOptions = new SoundOptions(
+            this.transform.position,
+            loop: true,
+            spatialize: true,
+            spatialBlend: 1f,
+            rolloffMode: AudioRolloffMode.Linear,
+            minDistance: 1f,
+            maxDistance: 79.25f
+        );
     }
 
     private void Update()
@@ -35,6 +43,7 @@ public class Phone : MonoBehaviour
         yield return new WaitForSeconds(delayInSeconds);
         isRinging = true;
         AudioManager.Instance.PlaySound(Sound.TELEPHONE_RING, soundOptions);
+
     }
 
     private void OnTriggerEnter(Collider collider)

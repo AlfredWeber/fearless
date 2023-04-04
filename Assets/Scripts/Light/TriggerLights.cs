@@ -14,6 +14,7 @@ public class TriggerLights : MonoBehaviour
         LightsController.Instance.ToggleAllLights();
         if (spawnKey)
         {
+            AudioManager.Instance.PlaySoundOneShot(Sound.POWER_DOWN);
             GameObject key = Helper.FindGameObjectByName("PowersupplyKey");
             if (key == null) Debug.LogError("Powersupply-Key not found!");
             else key.SetActive(true);
