@@ -50,8 +50,12 @@ public class GameManager : MonoBehaviour
         Helper.FindChildGameObjectsByName(doorParent, "Pivot", ref all);
         foreach (var item in all)
         {
-            if (shouldLock(item)) item.GetComponent<HotelRoomDoor>().SetLock(true);
-
+            if (shouldLock(item))
+            {
+                item.GetComponent<HotelRoomDoor>().SetLock(true);
+                item.GetComponent<Animator>().SetBool("Open", false);
+                item.GetComponent<Animator>().SetBool("Close", true);
+            }
         }
     }
 }

@@ -10,7 +10,10 @@ public enum Sound
     DOOR_CREAK,
     DOOR_LOCKED,
     DOOR_UNLOCK,
-    HORROR_RUN
+    HORROR_RUN,
+    POWER_DOWN,
+    DOOR_CLOSE_LOUD,
+    SCREAM
 }
 
 [System.Serializable]
@@ -232,7 +235,9 @@ public class AudioManager : MonoBehaviour
     public void StopSound(Sound sound)
     {
         GameObject go = FindBySound(sound);
+        if (go == null) return;
         AudioSource src = go.GetComponent<AudioSource>();
+        if (src == null) return;
         src.Stop();
     }
 
