@@ -74,6 +74,25 @@ public class HUDManager : MonoBehaviour
         flashlightOff.enabled = !flashlightOff.enabled;
     }
 
+    public void SetFlashlight(bool status)
+    {
+
+        RawImage flashlightOn = Helper.FindChildGameObjectByName(this.gameObject, "FlashlightOn").GetComponent<RawImage>();
+        RawImage flashlightOff = Helper.FindChildGameObjectByName(this.gameObject, "FlashlightOff").GetComponent<RawImage>();
+        if (status)
+        {
+            flashlightOn.enabled = true;
+            flashlightOff.enabled = false;
+        }
+        else
+        {
+            flashlightOn.enabled = false;
+            flashlightOff.enabled = true;
+        }
+
+
+    }
+
     private void ApplyTextOptions(TextOptions opts = null)
     {
         if (opts == null) opts = TextOptions.Default;

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -31,6 +32,9 @@ public class GameManager : MonoBehaviour
         yield return null;
         AudioManager.Instance.Restart();
         Scene scene = SceneManager.GetActiveScene();
+        HUDManager.Instance.SetFlashlight(false);
+        Helper.FindChildGameObjectByName(HUDManager.Instance.gameObject, "HudPowersupplyKey").GetComponent<RawImage>().enabled = false;
+        TriggerLights.spawnKey = true;
         SceneManager.LoadScene(scene.name);
     }
 

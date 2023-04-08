@@ -15,7 +15,8 @@ public class TriggerWallMid : MonoBehaviour
         {
             backgroundSound.Stop();
             // Scream.Play();
-            triggered = true;
+            // triggered = true;
+            EnemyLevel1.Instance.SetCurrentStatus(EnemyLevel1.EnemyStatus.CRAWL);
         }
     }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TriggerScream : MonoBehaviour
 {
+    public GameObject exitDoor;
+    public GameObject hotelDoor;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,5 +24,8 @@ public class TriggerScream : MonoBehaviour
 
         AudioManager.Instance.PlaySoundOneShot(Sound.SCREAM, new SoundOptions(position: this.transform.position, volume: 5f));
         this.gameObject.SetActive(false);
+        exitDoor.GetComponent<HotelRoomDoor>().SetLock(false);
+        Animator anim = hotelDoor.GetComponent<Animator>();
+        anim.speed = 1f;
     }
 }

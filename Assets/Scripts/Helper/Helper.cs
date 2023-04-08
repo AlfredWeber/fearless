@@ -40,6 +40,7 @@ public class Helper
 
     public static void FindChildGameObjectsByName(GameObject parent, string name, ref List<GameObject> output)
     {
+        if (parent == null) return;
         for (int i = 0; i < parent.transform.childCount; i++)
         {
             if (parent.transform.GetChild(i).name.ToLower() == name.ToLower())

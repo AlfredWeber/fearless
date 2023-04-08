@@ -28,6 +28,7 @@ public class TriggerRunFinished : MonoBehaviour
         anim.speed = 5f;
         anim.SetBool("Close", true);
         anim.SetBool("Open", false);
+        door.GetComponent<HotelRoomDoor>().SetIsOpen(false);
         AudioManager.Instance.PlaySoundOneShot(Sound.DOOR_CLOSE_LOUD);
     }
 

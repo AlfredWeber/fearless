@@ -106,4 +106,9 @@ public class HotelRoomDoor : MonoBehaviour
     {
         this.isLocked = status;
     }
+
+    public void SetIsOpen(bool status)
+    {
+        this.isOpen = status;
+    }
 }
