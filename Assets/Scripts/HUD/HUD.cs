@@ -23,7 +23,6 @@ public class HUD : MonoBehaviour
     void Start()
     {
         flashLightON.SetActive(false);
-        
     }
 
 
@@ -31,12 +30,12 @@ public class HUD : MonoBehaviour
 
     void Update()
     {
-        if(flashLightOB.activeInHierarchy)
+        if (flashLightOB.activeInHierarchy)
         {
             flashLightON.SetActive(true);
             flashLightOFF.SetActive(false);
         }
-        
+
         else
         {
             flashLightON.SetActive(false);

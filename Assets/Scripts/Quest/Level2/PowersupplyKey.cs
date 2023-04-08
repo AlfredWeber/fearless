@@ -63,7 +63,7 @@ public class PowersupplyKey : MonoBehaviour, ICollectable
             PlayerController.Instance.AddQuestItem(this);
             HUDManager.Instance.HideText();
             AudioManager.Instance.PlaySoundOneShot(Sound.KEY_PICKED_UP);
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
     }
     #endregion Interface

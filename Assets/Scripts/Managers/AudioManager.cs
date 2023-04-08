@@ -13,7 +13,16 @@ public enum Sound
     HORROR_RUN,
     POWER_DOWN,
     DOOR_CLOSE_LOUD,
-    SCREAM
+    SCREAM,
+    NAME_DANIELA,
+    NAME_JUERGEN,
+    NAME_SIMON,
+    NAME_NICOLA,
+    NAME_NORBERT,
+    NAME_LORENZ,
+    NAME_STEFAN,
+    NAME_NICK,
+    NAME_MANUEL
 }
 
 [System.Serializable]
@@ -85,7 +94,7 @@ public class AudioManager : MonoBehaviour
         src.volume = opts.volume;
         src.priority = opts.priority;
         src.timeSamples = opts.timeSamples;
-        src.gamepadSpeakerOutputType = opts.gamepadSpeakerOutputType;
+        // src.gamepadSpeakerOutputType = opts.gamepadSpeakerOutputType;
         src.outputAudioMixerGroup = opts.outputAudioMixerGroup;
         src.rolloffMode = opts.rolloffMode;
         src.velocityUpdateMode = opts.velocityUpdateMode;

@@ -29,7 +29,7 @@ public class SoundOptions
     public float volume;
     public int priority;
     public int timeSamples;
-    public GamepadSpeakerOutputType gamepadSpeakerOutputType;
+    // public GamepadSpeakerOutputType gamepadSpeakerOutputType;
     public AudioMixerGroup outputAudioMixerGroup;
     public AudioRolloffMode rolloffMode;
     public AudioVelocityUpdateMode velocityUpdateMode;
@@ -65,7 +65,7 @@ public class SoundOptions
         float volume = 1f,
         int priority = 128,
         int timeSamples = 0,
-        GamepadSpeakerOutputType gamepadSpeakerOutputType = GamepadSpeakerOutputType.Speaker,
+        // GamepadSpeakerOutputType gamepadSpeakerOutputType = GamepadSpeakerOutputType.Speaker,
         AudioMixerGroup outputAudioMixerGroup = null,
         AudioRolloffMode rolloffMode = AudioRolloffMode.Logarithmic,
         AudioVelocityUpdateMode velocityUpdateMode = AudioVelocityUpdateMode.Auto
@@ -95,7 +95,7 @@ public class SoundOptions
         this.volume = volume;
         this.priority = priority;
         this.timeSamples = timeSamples;
-        this.gamepadSpeakerOutputType = gamepadSpeakerOutputType;
+        // this.gamepadSpeakerOutputType = gamepadSpeakerOutputType;
         this.outputAudioMixerGroup = outputAudioMixerGroup;
         this.rolloffMode = rolloffMode;
         this.velocityUpdateMode = velocityUpdateMode;
