@@ -24,39 +24,44 @@ public class TriggerLights : MonoBehaviour
 
     private void OnTriggerExit()
     {
-        // string text = "Juergen";
         if (PlayerName.Instance != null)
         {
-            switch (PlayerName.Instance.playerName)
+            string name = PlayerName.Instance.playerName.ToLower();
+            switch (name)
             {
-                case "Daniela":
+                case "daniela":
                     AudioManager.Instance.PlaySoundOneShot(Sound.NAME_DANIELA);
                     break;
-                case "Juergen":
+                case "juergen":
                     AudioManager.Instance.PlaySoundOneShot(Sound.NAME_JUERGEN);
                     break;
-                case "Simon":
+                case "jürgen":
+                    AudioManager.Instance.PlaySoundOneShot(Sound.NAME_JUERGEN);
+                    break;
+                case "simon":
                     AudioManager.Instance.PlaySoundOneShot(Sound.NAME_SIMON);
                     break;
-                case "Norbert":
+                case "norbert":
                     AudioManager.Instance.PlaySoundOneShot(Sound.NAME_NORBERT);
                     break;
-                case "Nicola":
+                case "nicola":
                     AudioManager.Instance.PlaySoundOneShot(Sound.NAME_NICOLA);
                     break;
-                case "Manuel":
+                case "manuel":
                     AudioManager.Instance.PlaySoundOneShot(Sound.NAME_MANUEL);
                     break;
-                case "Lorenz":
+                case "lorenz":
                     AudioManager.Instance.PlaySoundOneShot(Sound.NAME_LORENZ);
                     break;
-                case "Nick":
+                case "nick":
                     AudioManager.Instance.PlaySoundOneShot(Sound.NAME_NICK);
                     break;
-                case "Stefan":
+                case "stefan":
                     AudioManager.Instance.PlaySoundOneShot(Sound.NAME_STEFAN);
                     break;
-
+                case "nico":
+                    AudioManager.Instance.PlaySoundOneShot(Sound.NAME_NICO);
+                    break;
             }
         }
 
