@@ -22,7 +22,8 @@ public enum Sound
     NAME_LORENZ,
     NAME_STEFAN,
     NAME_NICK,
-    NAME_MANUEL
+    NAME_MANUEL,
+    NAME_NICO
 }
 
 [System.Serializable]

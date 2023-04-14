@@ -7,11 +7,8 @@ public class TriggerDoors : MonoBehaviour
     private Vector3 targetPosition = new Vector3(0, 0.1f, 20f);
     private Vector3 targetRotation = new Vector3(0, 180f, 0);
     private Vector3 targetScale = new Vector3(0.025f, 0.025f, 0.025f);
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
+    public GameObject exitDoor;
 
     private void OnTriggerEnter(Collider collider)
     {
@@ -27,5 +24,6 @@ public class TriggerDoors : MonoBehaviour
         EnemyController.Instance.SetCurrentStatus(EnemyController.EnemyStatus.CRAWL);
         GameObject obj = Helper.FindGameObjectByName("TriggerGenerator");
         obj.SetActive(true);
+        exitDoor.GetComponent<HotelRoomDoor>().SetLock(false);
     }
 }
